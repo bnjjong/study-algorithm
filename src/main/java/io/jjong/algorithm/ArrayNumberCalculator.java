@@ -1,6 +1,7 @@
 package io.jjong.algorithm;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -20,12 +21,7 @@ public class ArrayNumberCalculator {
 
   public static void main(String[] args){
     final int plusNum = 10;
-    List<Integer> numbers = new ArrayList<>();
-    numbers.add(1);
-    numbers.add(9);
-    numbers.add(9);
-    numbers.add(9);
-    numbers.add(6);
+    List<Integer> numbers = Arrays.asList(1,9,9,9,6);
     List<Integer> result = plusArray(numbers, plusNum);
 
     System.out.println("result num : ");
