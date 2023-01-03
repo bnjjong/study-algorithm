@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class WordCounterUniCode {
 
   public static void main(String[] args) {
-    String str = "aaabbbccceeefff12345👍🔥國小心❤️❤️❤️❤️❤️";
+    String str = "aaabbbccceeefff12345👍🔥國小心♥♥♥♥♥";
 
     System.out.println(countDuplicateCharacters(str));
     System.out.println(countDuplicateCharacters2(str));
@@ -28,9 +28,9 @@ public class WordCounterUniCode {
     Map<String, Integer> result = new HashMap<>();
 
     for (int i=0; i <str.length(); i++) {
-      int cp = str.codePointAt(i);
+      int cp = str.codePointAt(i); // index에 해당하는 문자를 숫자로 변환한 값을 리턴해주는 메소드이다.
       String ch = String.valueOf(Character.toChars(cp));
-      System.out.println("cp : " + cp + ", ch : " + ch + ", charCount : " + Character.charCount(cp));
+      System.out.println("ch : " + ch + ", cp : " + cp +  ", charCount : " + Character.charCount(cp));
       if (Character.charCount(cp) == 2) { // 2는 대리 쌍을 뜻 함.
         i++;
       }
@@ -41,9 +41,9 @@ public class WordCounterUniCode {
 
   }
 
-  public static Map<Character, Long> countDuplicateCharacters2(String str) {
-    return str.chars()
-        .mapToObj(c -> (char) c) // IntStream -> 문자 스트림으로 변경
+  public static Map<String, Long> countDuplicateCharacters2(String str) {
+    return str.codePoints()
+        .mapToObj(c -> String.valueOf(Character.toChars(c)))
         .collect(Collectors.groupingBy( // 문자를 분류 하고
             c -> c, Collectors.counting()) // 카운팅
         );
