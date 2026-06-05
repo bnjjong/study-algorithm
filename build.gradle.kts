@@ -53,3 +53,12 @@ registerRunner("runReverseList", "io.jjong.algorithm.day1.runner.ReverseLinkedLi
 registerRunner("runDetectCycle", "io.jjong.algorithm.day1.runner.LinkedListCycleIIMainKt")
 registerRunner("runMaxProduct", "io.jjong.algorithm.day1.runner.MaximumProductSubarrayMainKt")
 registerRunner("runMergeLists", "io.jjong.algorithm.day1.runner.MergeTwoSortedListsMainKt")
+
+// ── 알고리즘 데모 main 실행 ──────────────────────────────────────────────────
+//   사용:  ./gradlew -q runClass -PmainClass=io.jjong.algorithm.queue.RPNExpressionKt
+tasks.register<JavaExec>("runClass") {
+    group = "algorithm"
+    description = "main 함수 실행 (-PmainClass=FQCN)"
+    classpath = sourceSets["main"].runtimeClasspath
+    (project.findProperty("mainClass") as String?)?.let { mainClass.set(it) }
+}
