@@ -1,34 +1,22 @@
 package io.jjong.leetcode.p0001
 
-import kotlin.test.Test
-import kotlin.test.assertTrue
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 
-class SolutionTest {
+class SolutionTest : StringSpec({
 
-    private val solution = Solution()
+    val solution = Solution()
 
-    @Test
-    fun `example 1`() {
-        val result = solution.twoSum(intArrayOf(2, 7, 11, 15), 9)
-        assertEqualsAsPair(intArrayOf(0, 1), result)
+    // 정답 인덱스 쌍은 순서가 달라도 동일하게 취급한다.
+    "example 1" {
+        solution.twoSum(intArrayOf(2, 7, 11, 15), 9).toList() shouldContainExactlyInAnyOrder listOf(0, 1)
     }
 
-    @Test
-    fun `example 2`() {
-        val result = solution.twoSum(intArrayOf(3, 2, 4), 6)
-        assertEqualsAsPair(intArrayOf(1, 2), result)
+    "example 2" {
+        solution.twoSum(intArrayOf(3, 2, 4), 6).toList() shouldContainExactlyInAnyOrder listOf(1, 2)
     }
 
-    @Test
-    fun `example 3 - same value twice`() {
-        val result = solution.twoSum(intArrayOf(3, 3), 6)
-        assertEqualsAsPair(intArrayOf(0, 1), result)
+    "example 3 - same value twice" {
+        solution.twoSum(intArrayOf(3, 3), 6).toList() shouldContainExactlyInAnyOrder listOf(0, 1)
     }
-
-    private fun assertEqualsAsPair(expected: IntArray, actual: IntArray) {
-        assertTrue(
-            actual.toSortedSet() == expected.toSortedSet(),
-            "expected ${expected.toList()}, got ${actual.toList()}",
-        )
-    }
-}
+})
