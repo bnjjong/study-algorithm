@@ -1,5 +1,11 @@
 # Project exclude paths
 /.gradle/
 /.idea/
+/.kotlin/
 /build/
 /build/classes/java/main/
+
+# misc
+*.hprof
+*.iml
+.DS_Store
