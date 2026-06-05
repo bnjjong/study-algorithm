@@ -3,3 +3,8 @@
 /.idea/
 /build/
 /build/classes/java/main/
+
+# misc
+*.hprof
+*.iml
+.DS_Store
