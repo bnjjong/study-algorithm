@@ -8,15 +8,6 @@ package io.jjong.leetcode.p0003
  */
 class Solution {
     fun lengthOfLongestSubstring(s: String): Int {
-        val maxLength = 0
-
-        for (i in s.indices) {
-            val index = i
-            while (index < s.length) {
-
-            }
-        }
-
-        return 0
+        TODO("슬라이딩 윈도우로 중복 없는 최장 substring 길이를 구하세요")
     }
 }
