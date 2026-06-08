@@ -8,24 +8,19 @@ package io.jjong.algorithm.day2
  * 중간에 삽입/삭제가 일어나도 기준점(cursor)이 고정이라 항목이 밀리지 않는다.
  */
 class CursorPaginator(data: List<Int>) {
-    // 어떤 정렬일까?
+    // 이진 탐색의 전제 — 오름차순(자연 정렬)으로 보관한다.
     private val sortedData = data.sorted()
-
 
     /**
      * [cursor]를 **초과**하는 첫 원소부터 최대 [size]개를 반환한다.
      * [cursor]가 null이면 가장 앞에서부터, 더 줄 원소가 없으면 빈 리스트를 반환한다.
      */
     fun page(cursor: Int?, size: Int): List<Int> {
-//        sortedData.forEach {
-//            print("$it, ")
-//        }
-//        println()
         val start = if (cursor == null) 0
         else upperBound(sortedData, cursor)
 
-        val end = minOf(start + size, sortedData.size) // start+size <- 이게 end 값이지만, overflow 될수 있으므로 전체 size 값이 들어감.
-//        println("start: $start, end: $end")
+        // start+size가 끝(size)을 넘으면 subList가 예외 → size로 클램핑 (오버플로가 아니라 경계 문제)
+        val end = minOf(start + size, sortedData.size)
         return sortedData.subList(start, end)
     }
 
@@ -33,11 +28,9 @@ class CursorPaginator(data: List<Int>) {
         var lo = 0
         var hi = inputData.size
         while (lo < hi) {
-            var mid = (lo + hi) ushr 1 //비트 shift, 우측으로 옮긴다. 나눗셈 하는 것임. 오버플로를 위해서 사용함.
-            if (inputData[mid] <= cursor) lo = mid+1 // 찾아낸 값이 커서보다 작거나 같으면 lo값을 업데이트 한다.
-            else hi = mid // 커서가 더 클 경우 우측을 날림.
-//            println("mid : $mid, value: ${inputData[mid]}, cursor: $cursor")
-//            println("lo: $lo, hi: $hi")
+            val mid = (lo + hi) ushr 1 // 비트 shift로 나눗셈. ushr은 빈 자리를 0으로 채워 합의 오버플로에도 안전.
+            if (inputData[mid] <= cursor) lo = mid + 1 // 찾은 값이 커서 이하면 lo를 올려 오른쪽으로
+            else hi = mid // 커서 초과면 mid는 후보라 버리지 않고 hi만 좁힘
         }
         return lo
     }

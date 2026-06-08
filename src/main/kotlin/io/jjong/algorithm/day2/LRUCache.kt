@@ -15,22 +15,16 @@ class LRUCache(private val capacity: Int) {
         var prev: Node? = null
         var next: Node? = null
     }
+
     private val map = HashMap<Int, Node>()
-    private val head = Node(0,0)
-    private val tail = Node(0,0)
-    
+    private val head = Node(0, 0)
+    private val tail = Node(0, 0)
+
     init {
-        // 서로 연결한다. 
+        // 서로 연결한다.
         head.next = tail // head -> tail
         tail.prev = head // head <- tail
     }
-    
-
-
-    // TODO: 내부 자료구조를 직접 설계하세요.
-    //   - 키 → 노드를 O(1)로 찾을 HashMap
-    //   - 사용 순서를 유지할 이중 연결 리스트 (Dummy head/tail 패턴 권장 — 엣지케이스가 사라짐)
-    //   힌트: LinkedHashMap(accessOrder=true)로 치트할 수도 있지만, 면접에선 직접 구현을 봅니다.
 
     /** 키가 있으면 값을 반환하며 "최근 사용"으로 갱신하고, 없으면 -1을 반환한다. */
     fun get(key: Int): Int {
@@ -72,7 +66,6 @@ class LRUCache(private val capacity: Int) {
         node.prev = head //처음으로 이동
         head.next!!.prev = node // 가장 처음에 있던 노드 prev에 현재 노드를 붙임.
         head.next = node // 가장 처음으로 옮김!
-
     }
 
     private fun remove(node: Node) {
