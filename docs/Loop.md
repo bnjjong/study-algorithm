@@ -58,4 +58,14 @@ loop@ for (i in 1..3) {
 list.forEach { println(it) }
 list.forEachIndexed { index, value -> println("$index: $value") }
 repeat(3) { println("hello $it") }
+
+// 인덱스 범위만 순회
+for (i in array.indices) {
+    println(array[i])
+}
+
+// 특정 인덱스부터 순회 (예: index 1부터)
+for (i in array.indices.drop(1)) {
+    println(array[i])
+}
 ```

@@ -32,7 +32,8 @@ class MaximumProductSubarrayTest {
 
     @Test
     fun `홀수 개의 음수`() {
-        assertEquals(2, maxProduct(intArrayOf(-2, -3, -4)))
+        // 음수 3개(홀수) → 끝의 음수 하나를 떼어 짝수 개로: [-3,-4]=12
+        assertEquals(12, maxProduct(intArrayOf(-2, -3, -4)))
     }
 
     @Test

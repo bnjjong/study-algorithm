@@ -12,5 +12,26 @@ package io.jjong.algorithm.day1
  * 복잡도 목표: 시간 O(N), 공간 O(1).
  */
 fun maxProduct(nums: IntArray): Int {
-    TODO("curMax와 curMin을 동시에 추적하세요 (tempMax 임시변수 주의)")
+    var maxN = nums[0]
+    var minN = nums[0]
+    var maxSoFar = nums[0]
+    print("input: ")
+    nums.forEach {
+        print("$it,")
+    }
+    println()
+    nums.indices.drop(1).forEach { i ->
+        val n = nums[i]
+        // 최고값은 3개중 하나.
+        // 1. 현재값,
+        // 2. max * 현재 값
+        // 3. min * 현재값 (마이너스 끼리 곱일 경우)
+        val tempMax = maxOf(n, maxOf(n*maxN, n*minN))
+        minN = minOf(n, minOf(n*maxN, n*minN))
+        maxN = tempMax
+        println("max: $maxN, min: $minN, maxF: $maxSoFar")
+
+        maxSoFar = maxOf(maxSoFar, maxN)
+    }
+    return maxSoFar
 }

@@ -12,11 +12,13 @@ package io.jjong.algorithm.day1
  * 엣지케이스: 길이가 다를 때, 마지막에 carry가 남을 때([9,9]+[1]=[0,0,1]).
  */
 fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
+    // 변수 선언
     val dummy = ListNode(0)
     var cur = dummy
     var p1 = l1
     var p2 = l2
     var carry = 0
+    // 루프가 돌아가야 하는 조건들을 잘 고민해야됨.
     while (p1 != null || p2 != null || carry != 0) {
         val sum = (p1?.value ?: 0) + (p2?.value ?: 0) + carry
         carry = sum / 10
