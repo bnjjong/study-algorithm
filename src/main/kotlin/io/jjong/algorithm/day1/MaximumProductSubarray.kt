@@ -15,11 +15,11 @@ fun maxProduct(nums: IntArray): Int {
     var maxN = nums[0]
     var minN = nums[0]
     var maxSoFar = nums[0]
-    print("input: ")
-    nums.forEach {
-        print("$it,")
-    }
-    println()
+//    print("input: ")
+//    nums.forEach {
+//        print("$it,")
+//    }
+//    println()
     nums.indices.drop(1).forEach { i ->
         val n = nums[i]
         // 최고값은 3개중 하나.
@@ -29,7 +29,7 @@ fun maxProduct(nums: IntArray): Int {
         val tempMax = maxOf(n, maxOf(n*maxN, n*minN))
         minN = minOf(n, minOf(n*maxN, n*minN))
         maxN = tempMax
-        println("max: $maxN, min: $minN, maxF: $maxSoFar")
+//        println("max: $maxN, min: $minN, maxF: $maxSoFar")
 
         maxSoFar = maxOf(maxSoFar, maxN)
     }
