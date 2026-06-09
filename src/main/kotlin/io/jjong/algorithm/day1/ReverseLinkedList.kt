@@ -5,6 +5,9 @@ package io.jjong.algorithm.day1
  *
  * 연결 리스트를 뒤집어서 새 head를 반환한다. 1→2→3→4→5 가 들어오면 5→4→3→2→1.
  *
+ * - Input  : [head] — 리스트의 머리 (null 가능)
+ * - Output : 뒤집힌 리스트의 새 머리 (입력이 null이면 null)
+ *
  * 핵심 패턴: 3-pointer (prev / cur / next).
  * 반드시 next를 먼저 저장한 뒤 cur.next = prev 로 방향을 뒤집어야 다음 노드 주소를 잃지 않는다.
  * 복잡도 목표: 시간 O(N), 공간 O(1).

@@ -53,6 +53,8 @@ registerRunner("runReverseList", "io.jjong.algorithm.day1.runner.ReverseLinkedLi
 registerRunner("runDetectCycle", "io.jjong.algorithm.day1.runner.LinkedListCycleIIMainKt")
 registerRunner("runMaxProduct", "io.jjong.algorithm.day1.runner.MaximumProductSubarrayMainKt")
 registerRunner("runMergeLists", "io.jjong.algorithm.day1.runner.MergeTwoSortedListsMainKt")
+registerRunner("runMaxArraySum", "io.jjong.algorithm.day1.runner.MaxArraySumMainKt")
+registerRunner("runAddLargeNumbers", "io.jjong.algorithm.day1.runner.LargeNumberAdditionMainKt")
 
 // day2 (binary search) 러너
 registerRunner("runClimbingLeaderboard", "io.jjong.algorithm.day2.runner.ClimbingLeaderboardMainKt", "day2-runner")

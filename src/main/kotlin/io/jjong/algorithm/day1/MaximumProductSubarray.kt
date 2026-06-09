@@ -6,6 +6,9 @@ package io.jjong.algorithm.day1
  * 정수 배열에서 곱이 가장 큰 **연속 부분 배열**의 곱을 반환한다.
  * 예: [2, 3, -2, 4] → 6.
  *
+ * - Input  : [nums] — 정수 배열 (음수·0 포함, 최소 1개 원소)
+ * - Output : 연속 부분 배열의 최대 곱 (Int)
+ *
  * 핵심: 곱셈은 음수 두 개가 만나면 양수가 되므로 매 위치에서 끝나는
  * **최대 곱(curMax)과 최소 곱(curMin)을 동시에** 추적해야 한다.
  * curMax를 먼저 갱신하면 curMin 계산이 망가지므로 tempMax에 저장 후 둘 다 갱신.
@@ -27,6 +30,7 @@ fun maxProduct(nums: IntArray): Int {
         // 2. max * 현재 값
         // 3. min * 현재값 (마이너스 끼리 곱일 경우)
         val tempMax = maxOf(n, maxOf(n*maxN, n*minN))
+        // 최소값도 마찬가지 (마이너스가 있으므로)
         minN = minOf(n, minOf(n*maxN, n*minN))
         maxN = tempMax
 //        println("max: $maxN, min: $minN, maxF: $maxSoFar")
