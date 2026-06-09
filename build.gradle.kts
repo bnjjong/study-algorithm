@@ -38,9 +38,9 @@ tasks.test {
 // 표준입력으로 입력을 받아 풀이를 호출하고 표준출력으로 결과를 찍는다.
 //   사용:  ./gradlew -q runAddTwoNumbers < samples/day1/add-two-numbers.in
 //   또는 그냥 ./gradlew -q runAddTwoNumbers 후 키보드로 입력 (끝나면 Ctrl-D)
-fun registerRunner(taskName: String, mainClassName: String) {
+fun registerRunner(taskName: String, mainClassName: String, taskGroup: String = "day1-runner") {
     tasks.register<JavaExec>(taskName) {
-        group = "day1-runner"
+        group = taskGroup
         description = "stdin/stdout 러너: $mainClassName"
         classpath = sourceSets["main"].runtimeClasspath
         mainClass.set(mainClassName)
@@ -53,6 +53,9 @@ registerRunner("runReverseList", "io.jjong.algorithm.day1.runner.ReverseLinkedLi
 registerRunner("runDetectCycle", "io.jjong.algorithm.day1.runner.LinkedListCycleIIMainKt")
 registerRunner("runMaxProduct", "io.jjong.algorithm.day1.runner.MaximumProductSubarrayMainKt")
 registerRunner("runMergeLists", "io.jjong.algorithm.day1.runner.MergeTwoSortedListsMainKt")
+
+// day2 (binary search) 러너
+registerRunner("runClimbingLeaderboard", "io.jjong.algorithm.day2.runner.ClimbingLeaderboardMainKt", "day2-runner")
 
 // ── 알고리즘 데모 main 실행 ──────────────────────────────────────────────────
 //   사용:  ./gradlew -q runClass -PmainClass=io.jjong.algorithm.queue.RPNExpressionKt
