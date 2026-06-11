@@ -2,7 +2,7 @@
 
 `TreeMap`은 **키가 항상 정렬된 상태로 유지**되는 Map(레드-블랙 트리). 주요 연산이 전부 **O(log n)**.
 `HashMap`이 못 하는 **"이웃 키 질의(floor/ceiling)"·"범위 질의"·"정렬 순회"**가 필요할 때 쓴다 — 랭킹, 구간 검색, 가장 가까운 값.
-무신사 라이브 코딩(HackerRank·Kotlin) 대비. ⭐ = 코테 단골.
+
 
 > Kotlin 리터럴은 `sortedMapOf(...)`. 단, **이웃/범위 메서드(floorKey 등)는 `java.util.TreeMap` 타입에만** 있으므로
 > 코테에선 보통 `import java.util.TreeMap` 후 `TreeMap<K, V>()`를 직접 쓴다.
