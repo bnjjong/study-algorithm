@@ -33,4 +33,30 @@ class TopKSearchKeywordsTest {
     fun `단일 키워드`() {
         assertEquals(listOf("solo"), topKKeywords(listOf("solo", "solo"), 1))
     }
+
+    // ── Bucket sort 버전 ──────────────────────────────
+    @Test
+    fun `Bucket — 예시`() {
+        val logs = listOf("nike", "adidas", "nike", "puma", "nike", "adidas")
+        assertEquals(listOf("nike", "adidas"), topKKeywordsBucket(logs, 2))
+    }
+
+    @Test
+    fun `Bucket — 동점 사전순`() {
+        assertEquals(listOf("apple", "banana"), topKKeywordsBucket(listOf("banana", "apple", "cherry"), 2))
+        assertEquals(listOf("apple", "banana"), topKKeywordsBucket(listOf("apple", "banana", "apple", "banana", "cherry"), 2))
+    }
+
+    @Test
+    fun `Bucket — 정렬 버전과 항상 같은 결과`() {
+        val cases = listOf(
+            listOf("nike", "adidas", "nike", "puma", "nike", "adidas") to 2,
+            listOf("a", "a", "b", "c", "c", "c") to 2,
+            listOf("x", "y", "z") to 3,
+            listOf("solo", "solo") to 1,
+        )
+        for ((logs, k) in cases) {
+            assertEquals(topKKeywords(logs, k), topKKeywordsBucket(logs, k), "logs=$logs k=$k")
+        }
+    }
 }
