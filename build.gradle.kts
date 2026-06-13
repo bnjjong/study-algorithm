@@ -48,16 +48,16 @@ fun registerRunner(taskName: String, mainClassName: String, taskGroup: String = 
     }
 }
 
-registerRunner("runAddTwoNumbers", "io.jjong.algorithm.day1.runner.AddTwoNumbersMainKt")
-registerRunner("runReverseList", "io.jjong.algorithm.day1.runner.ReverseLinkedListMainKt")
-registerRunner("runDetectCycle", "io.jjong.algorithm.day1.runner.LinkedListCycleIIMainKt")
-registerRunner("runMaxProduct", "io.jjong.algorithm.day1.runner.MaximumProductSubarrayMainKt")
-registerRunner("runMergeLists", "io.jjong.algorithm.day1.runner.MergeTwoSortedListsMainKt")
-registerRunner("runMaxArraySum", "io.jjong.algorithm.day1.runner.MaxArraySumMainKt")
-registerRunner("runAddLargeNumbers", "io.jjong.algorithm.day1.runner.LargeNumberAdditionMainKt")
+registerRunner("runAddTwoNumbers", "io.jjong.algorithm.linkedlist.runner.AddTwoNumbersMainKt")
+registerRunner("runReverseList", "io.jjong.algorithm.linkedlist.runner.ReverseLinkedListMainKt")
+registerRunner("runDetectCycle", "io.jjong.algorithm.linkedlist.runner.LinkedListCycleIIMainKt")
+registerRunner("runMaxProduct", "io.jjong.algorithm.dp.runner.MaximumProductSubarrayMainKt")
+registerRunner("runMergeLists", "io.jjong.algorithm.linkedlist.runner.MergeTwoSortedListsMainKt")
+registerRunner("runMaxArraySum", "io.jjong.algorithm.dp.runner.MaxArraySumMainKt")
+registerRunner("runAddLargeNumbers", "io.jjong.algorithm.linkedlist.runner.LargeNumberAdditionMainKt")
 
 // day2 (binary search) 러너
-registerRunner("runClimbingLeaderboard", "io.jjong.algorithm.day2.runner.ClimbingLeaderboardMainKt", "day2-runner")
+registerRunner("runClimbingLeaderboard", "io.jjong.algorithm.ranking.runner.ClimbingLeaderboardMainKt", "day2-runner")
 
 // ── 알고리즘 데모 main 실행 ──────────────────────────────────────────────────
 //   사용:  ./gradlew -q runClass -PmainClass=io.jjong.algorithm.queue.RPNExpressionKt
